@@ -6,7 +6,7 @@ resources:
   - repository: self
     ref: 'refs/heads/master'
   - repository: sources
-    type: git
+    type: github
     name: PrickettAcademy/Simple
     ref: 'refs/heads/master'
     endpoint: 'AnotherProject'
