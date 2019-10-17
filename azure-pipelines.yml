@@ -1,0 +1,56 @@
+trigger:
+- master
+
+resources:
+  repositories:
+  - repository: self
+    ref: 'refs/heads/master'
+  - repository: sources
+    type: git
+    name: MyFirstProject/sources
+    ref: 'refs/heads/master'
+  - repository: scripts
+    type: git
+    name: MyFirstProject/scripts
+    ref: 'refs/heads/master'
+
+jobs:
+- job: multirepoWithGitHub
+  pool: 'default'
+  steps:
+  - script: |
+      echo "repoUrl=$(build.repository.uri)"
+      echo "version=$(build.sourceVersion)"
+      echo "author=$(build.sourceVersionAuthor)"
+      echo "workingdir=$(Agent.BuildDirectory)"
+      echo "sourcesDir=$(Build.SourcesDirectory)"
+      echo "default=$(System.DefaultWorkingDirectory)"
+    workingDirectory: $(Agent.BuildDirectory)
+  - checkout: self
+  - script: |
+      echo "repoUrl=$(build.repository.uri)"
+      echo "version=$(build.sourceVersion)"
+      echo "author=$(build.sourceVersionAuthor)"
+      echo "workingdir=$(Agent.BuildDirectory)"
+      echo "sourcesDir=$(Build.SourcesDirectory)"
+      echo "default=$(System.DefaultWorkingDirectory)"
+    workingDirectory: $(Agent.BuildDirectory)
+  - checkout: sources
+  - script: |
+      echo "repoUrl=$(build.repository.uri)"
+      echo "version=$(build.sourceVersion)"
+      echo "author=$(build.sourceVersionAuthor)"
+      echo "workingdir=$(Agent.BuildDirectory)"
+      echo "sourcesDir=$(Build.SourcesDirectory)"
+      echo "default=$(System.DefaultWorkingDirectory)"
+    workingDirectory: $(Agent.BuildDirectory)
+  - checkout: scripts
+  - script: |
+      echo "repoUrl=$(build.repository.uri)"
+      echo "version=$(build.sourceVersion)"
+      echo "author=$(build.sourceVersionAuthor)"
+      echo "workingdir=$(Agent.BuildDirectory)"
+      echo "sourcesDir=$(Build.SourcesDirectory)"
+      echo "default=$(System.DefaultWorkingDirectory)"
+    workingDirectory: $(Agent.BuildDirectory)
+
