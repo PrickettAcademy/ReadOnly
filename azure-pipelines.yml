@@ -7,8 +7,9 @@ resources:
     ref: 'refs/heads/master'
   - repository: sources
     type: git
-    name: MyFirstProject/sources
+    name: PrickettAcademy/Simple
     ref: 'refs/heads/master'
+    endpoint: 'AnotherProject'
   - repository: scripts
     type: git
     name: MyFirstProject/scripts
